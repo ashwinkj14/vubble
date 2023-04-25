@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Components/Home';
+import NavBar from './Components/navbar/NavBar';
+import Profile from './Components/profile/Profile';
 
-function App() {
+class App extends React.Component {
+  handleSearch = (searchTerm) => {
+    console.log('Searching for', searchTerm);
+  };
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+        <NavBar onSubmit={this.handleSearch}/>
+        <div className='App-dummy'/>
+        <Routes>
+          <Route path="/home" element={<Home/>} />
+          <Route path="/profile" element={<Profile/>} />
+        </Routes>
+      </div>
+    </Router>
+    );
+  }
 }
+
 
 export default App;

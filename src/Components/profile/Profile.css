@@ -1,0 +1,75 @@
+.tabs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tab-entry{
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    color:rgb(186, 185, 185);
+}
+
+.tab-entry:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.span-entry{
+    vertical-align: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.span-entry-active{
+    color: white;
+}
+
+.profile-span-entry{
+    vertical-align: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name{
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.profile-descr{
+    color: rgb(150, 150, 150);
+}
+
+.profile-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image-container{
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin: 1rem;
+    overflow: hidden;
+}
+
+.profile-container{
+    background-color: rgb(21, 21, 21);
+    padding-top: 4rem;
+}
+
+#profile-image{
+    width: 128px;
+}
+
+.tabs-container{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,79 @@
+.upload-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(9, 9, 9);
+}
+
+.upload-btn{
+    background-color: rgb(27, 139, 252);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.upload-btn:hover{
+    cursor: pointer;
+}
+
+.upload-btn-content{
+    color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.content-table-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.content-table-header-cell{
+    color: rgb(210, 210, 210);
+    margin: 0.8rem;
+}
+
+.table-header-video{
+    margin-left: 2rem;   
+}
+
+.table-header-upload-time{
+    margin-left: 30rem;
+}
+
+.table-header-views{
+    margin-left: 10rem;
+}
+
+.manage-content-header{
+    padding-top: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.upload-btn-container{
+    padding-right: 1.5rem;
+}
+
+.manage-content-title{
+    color: white;
+    font-size: 2rem;
+    padding-left: 0.8rem;
+}
+
+.tab-divider{
+    display: block;
+    width: 100vw;
+    position: absolute;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.channel-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.channel-content-default{
+    color: white;
+    margin-top: 3rem;
+}

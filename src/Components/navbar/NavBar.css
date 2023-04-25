@@ -1,0 +1,220 @@
+form {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  button[type="submit"] {
+    display: inline-flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    font-weight: 600;
+    border-top-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+    font-size: 1.4rem;
+    height: 2.5rem;
+    background-color: rgb(103, 85, 221);
+  }
+
+  .logo-container{
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo{
+    margin-top: 1.3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .search-btn-container{
+    height: 2.2rem;
+    width: 2.2rem;
+    fill: white;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: rgb(103, 85, 221);
+    cursor:pointer;
+  }
+  
+  .navbar-main {
+    background-color: #0f0f11 !important;
+    display: flex !important;
+    box-shadow: var(--shadow-elevation-1)  !important;
+    -webkit-box-align: stretch !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    height: 4rem !important;
+  }
+
+  .navbar-logo{
+    -webkit-box-flex: 1 !important;
+    flex-grow: 1 !important;
+    flex-shrink: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    -webkit-box-align: stretch !important;
+    align-items: stretch !important;
+    -webkit-box-pack: start !important;
+    justify-content: center !important;
+    align-items: center;
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar-search{
+    -webkit-box-flex: 2 !important;
+    flex-grow: 2 !important;
+    flex-shrink: 1 !important;
+    width: 100% !important;
+    -webkit-box-align: center !important;
+    align-items: center !important;
+    -webkit-box-pack: center !important;
+    justify-content: center !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-settings{
+    -webkit-box-flex: 1 !important;
+    flex-grow: 1 !important;
+    flex-shrink: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    -webkit-box-align: center !important;
+    align-items: center !important;
+    -webkit-box-pack: end !important;
+    justify-content: flex-end !important;
+  }
+
+  .search-container{
+    flex-basis: 40rem;
+    position: relative;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .search-box{
+    max-width: 40rem;
+  }
+
+  .head-logo{
+    color: rgb(130, 117, 218);
+    margin: 1rem;
+  }
+
+  .settings{
+    color:white;
+  }
+
+  .logo-inner{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .user-settings{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btns{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sign-btn{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .btn{
+    display: inline-flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    height: 2.2rem;
+    background-color: rgb(83 83 95 / 39%);
+    color: #ededf1;
+  }
+
+  .signup-btn-textures{
+    background-color: rgb(103, 85, 221);
+    color: #f1f1f1;
+  }
+
+  .login-btn-textures{
+    background-color: rgb(83 83 95 / 39%);
+    color: #ededf1;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    font: inherit;
+}
+
+.account-icon{
+    width: 100%;
+    height: 2rem;
+    top: 0px;
+    fill: white;
+}
+
+.account-icon:hover{
+  cursor: pointer;
+}
+
+.account-btn{
+    /* background-color: rgb(83 83 95 / 39%); */
+    height: 2.2rem;
+    width: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.navbar-container{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.no-underline{
+  text-decoration: none;
+}
