@@ -147,6 +147,7 @@ form {
   .sign-btn{
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-top: 0.5rem
   }
 
   .btn{
@@ -167,6 +168,7 @@ form {
     height: 2.2rem;
     background-color: rgb(83 83 95 / 39%);
     color: #ededf1;
+    cursor: pointer;
   }
 
   .signup-btn-textures{
@@ -217,4 +219,106 @@ form {
 
 .no-underline{
   text-decoration: none;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+}
+
+.popup-content {
+  
+  background-color: #18181b;
+  border-radius: 10px;
+  padding: 30px;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.popup-form{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.popup-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.popup-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.popup-content label {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.popup-content button {
+  color: black;
+  font-size: 1.2rem;
+  padding: 10px 50px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.popup-content button:hover {
+  background-color: #6d1bb7;
+  color: white;
+}
+
+.popup-content a {
+  color: #9146ff;
+  text-decoration: underline;
+}
+
+.signup-btns{
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-btn{
+  margin-top: 0.5rem;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
 }

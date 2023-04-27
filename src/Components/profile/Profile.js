@@ -1,13 +1,15 @@
 import React from 'react';
 import Upload from './Upload';
 import './Profile.css';
-// import './profile/Upload.css';
+import {user} from '../../services/firebase';
 
 function Profile() {
-    let name = 'Ashwin KJ';//fetch name from database;
     const [isHome, setIsHome] = React.useState(false);
     const [isPlayList, setIsPlayList] = React.useState(false);
     const [isManage, setIsManage] = React.useState(false);
+
+    let name = user.displayName;
+    let photoURL = user.photoURL;
 
     const handleClickForManage = () => {
         setIsHome(false);
@@ -32,7 +34,7 @@ function Profile() {
             <div className='profile-header'>
                 <div className='profile-image-container'>
                     <span className='profile-span-entry'>
-                        <img id='profile-image' src='https://yt3.googleusercontent.com/ytc/AGIKgqPN9RCEbD_AQ5rsYqahZCBdzW5vG_5m2DWyygUadw=s176-c-k-c0x00ffffff-no-rj' alt='Ashwin'/>
+                        <img id='profile-image' src={photoURL} alt='Ashwin'/>
                     </span>
                 </div>
                 <div className='profile-span-container'>

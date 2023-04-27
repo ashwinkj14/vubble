@@ -1,28 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './NavBar.css';
 import {Link} from 'react-router-dom';
+import Login from '../profile/Login';
+import {user} from '../../services/firebase';
 
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: '',
-    };
+function NavBar() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
+//   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(searchTerm);
+  };
+
+//   const handleUserLoginState = (currentStatus) => {
+//     setIsUserLoggedIn(currentStatus);
+//   };
+
+  if(showDialog){
+    document.body.style.overflow = 'hidden';
+  }else{
+    document.body.style.overflow = 'unset';
   }
 
-  handleInputChange = (event) => {
-    this.setState({
-      searchTerm: event.target.value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.onSubmit(this.state.searchTerm);
-  };
-
-  render() {
-    return (
+  return (
     <div className='navbar-container'>
     <div className='navbar-main'>
        <div className='navbar-logo'>
@@ -42,12 +48,12 @@ class NavBar extends React.Component {
        <div className='navbar-search'>
             <div className='search-container'>
                 <div className='search-box'>
-                        <form onSubmit={this.handleSubmit}>
+                        <form onSubmit={handleSubmit}>
                         <input
                         type="text"
                         placeholder="Search"
-                        value={this.state.searchTerm}
-                        onChange={this.handleInputChange}
+                        value={searchTerm}
+                        onChange={handleInputChange}
                         />
                         <button type="submit">
                         <div className='search-btn-container'>
@@ -75,7 +81,7 @@ class NavBar extends React.Component {
                         </button>
                     </div>
                     <div className='sign-btn'>
-                        <button className='btn signup-btn-textures'>
+                        <button onClick={()=>{setShowDialog(true);}} className='btn signup-btn-textures'>
                             <div>
                                 Sign Up
                             </div>
@@ -86,8 +92,8 @@ class NavBar extends React.Component {
                     <Link to='/profile'>
                     <svg width="100%" height="100%" viewBox="0 0 20 20" x="0px" y="0px" className="account-icon">
                         <g>
-                            <path fill-rule="evenodd" d="M5 7a5 5 0 116.192 4.857A2 2 0 0013 13h1a3 3 0 013 3v2h-2v-2a1 1 0 00-1-1h-1a3.99 3.99 0 01-3-1.354A3.99 3.99 0 017 15H6a1 1 0 00-1 1v2H3v-2a3 3 0 013-3h1a2 2 0 001.808-1.143A5.002 5.002 0 015 7zm5 3a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd">
-                                </path>
+                        <path fill-rule="evenodd" d="M5 7a5 5 0 116.192 4.857A2 2 0 0013 13h1a3 3 0 013 3v2h-2v-2a1 1 0 00-1-1h-1a3.99 3.99 0 01-3-1.354A3.99 3.99 0 017 15H6a1 1 0 00-1 1v2H3v-2a3 3 0 013-3h1a2 2 0 001.808-1.143A5.002 5.002 0 015 7zm5 3a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd">
+                            </path>
                         </g>
                     </svg>
                     </Link>
@@ -95,10 +101,32 @@ class NavBar extends React.Component {
             </div>
        </div>
     </div>
+        {showDialog && 
+            (
+                <div class="popup-container" onClick={()=>{setShowDialog(false);}}>
+                    <div class="popup-content">
+                        <button class="close-button" onClick={()=>{setShowDialog(false);}}>&times;</button>
+                        <h2>Join Vubble</h2>
+                        <form className='popup-form'>
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required/>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required/>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required/>
+                            <div className='signup-btns'>
+                                <button className="submit-btn" type="submit">Sign Up</button>
+                                <Login/>
+                            </div>
+                        </form>
+                        <p>Already have an account? <a href="#">Log In</a></p>
+                    </div>
+                </div>
+            )
+        }
     </div>
     );
   }
-}
 
 export default NavBar;
 //rgb(255, 132, 0)

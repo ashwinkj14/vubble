@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import NavBar from './Components/navbar/NavBar';
 import Profile from './Components/profile/Profile';
+import VideoPlayer from './Components/player/videoPlayer';
 
 class App extends React.Component {
   handleSearch = (searchTerm) => {
@@ -13,10 +14,10 @@ class App extends React.Component {
     <Router>
       <div className="App">
         <NavBar onSubmit={this.handleSearch}/>
-        <div className='App-dummy'/>
         <Routes>
           <Route path="/home" element={<Home/>} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/play/:id" element={<VideoPlayer/>} />
         </Routes>
       </div>
     </Router>
