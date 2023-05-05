@@ -7,10 +7,12 @@ function Video(props) {
     let src = "https://i.ytimg.com/vi/oO5k-0QpxTk/maxresdefault.jpg";
     let descr = "";
     let username = "";
+    let views = "";
     if(Object.keys(props).length !== 0){
         src = props.src;
         descr = props.descr;
         username = props.username;
+        views = props.views;
     }
 
     const navigate = useNavigate();
@@ -29,7 +31,7 @@ function Video(props) {
             <div className='video-container'>
                 <div className='video-thumbnail' style={{backgroundImage:`url(${src})`}}></div>
             </div>
-            <Description descr={descr} username={username}/>
+            <Description descr={descr} username={username} views={views}/>
         </div>
     );
 }

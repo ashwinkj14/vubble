@@ -6,7 +6,7 @@ function Login() {
 
     return(
         <div className="login-btn">
-            <button type="button" class="login-with-google-btn" onClick={signInWithGoogle}>Google</button>
+            <button type="button" className="login-with-google-btn" onClick={signInWithGoogle}>Google</button>
         </div>
     );
 

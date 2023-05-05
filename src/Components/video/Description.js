@@ -5,9 +5,11 @@ import './Description.css';
 function Description(props) {
     let defaultDesc = "Default description";
     let username = "ashwin";
+    let views = "0";
     if(Object.keys(props).length !== 0){
         defaultDesc = props.descr;
         username = props.username;
+        views = props.views;
     }
     
     return(
@@ -18,9 +20,9 @@ function Description(props) {
             <div className='channel-details'>
                 <span className='channel-name'>{username}</span>
                 <div className='video-details'>
-                    <span className='video-meta'>2 views</span>
-                    <span className='dot'>•</span>
-                    <span className='video-upload-period'>2 hours ago</span>
+                    <span className='video-meta'>{views} views</span>
+                    {/* <span className='dot'>•</span>
+                    <span className='video-upload-period'>2 hours ago</span> */}
                 </div>
             </div>
         </div>

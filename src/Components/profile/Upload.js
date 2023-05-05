@@ -1,21 +1,27 @@
 import React from 'react';
-// import AWS from 'aws-sdk';
+import AWS from 'aws-sdk';
 import './Upload.css';
-import {storage} from '../../services/firebase';
-import {ref, uploadBytes} from 'firebase/storage';
 import {user, database} from '../../services/firebase';
-import {ref as databaseRef, set} from 'firebase/database';
+import {ref as databaseRef, set, get, push, child} from 'firebase/database';
+import {sha256} from 'hash.js';
 
-// const S3_BUCKET = 'vidstream-input';
-// const REGION = 'us-east-1';
-// const ACCESS_KEY = 'AKIATVI4NKXF5XJWGFHD';
-// const SECRET_ACCESS_KEY = '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';
+const S3_BUCKET = 'vidstream-input';
+const REGION = 'us-east-1';
+const ACCESS_KEY = 'AKIATVI4NKXF5XJWGFHD';
+const SECRET_ACCESS_KEY = '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';
 
-// const s3 = new AWS.S3({
-//   accessKeyId: ACCESS_KEY,
-//   secretAccessKey: SECRET_ACCESS_KEY,
-//   region: REGION,
-// });
+const s3 = new AWS.S3({
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_ACCESS_KEY,
+  region: REGION,
+});
+
+function hashStringWithTime(str) {
+  const timestamp = Date.now().toString();
+  const input = str + timestamp;
+  const hash = sha256().update(input).digest('hex');
+  return hash;
+}
 
 
 function Upload() {
@@ -50,7 +56,7 @@ function Upload() {
         return new Promise((resolve, reject) => {
           const input = document.createElement('input');
           input.type = 'file';
-          input.accept = '*';
+          input.accept = 'video/*';
           input.onchange = (event) => {
             const file = event.target.files[0];
             if (file) {
@@ -62,23 +68,71 @@ function Upload() {
           input.click();
         });
       };
-    
-      const uploadVideo = async (file) => {    
-        const videoRef = ref(storage, `videos/${file.name}`);
-        uploadBytes(videoRef, selectedFile).then(()=>{
-          console.log('Video uploaded');
-          const descr = document.querySelector("#video-description");
-          set(databaseRef(database,`users/${user.displayName}`),{
-            username:user.displayName,
-            video:selectedFile.name,
-            description:descr.value,
-            views:"1",
-            updated:"last 1 hour ago"
-          });
-          setShowDialog(false);
-        });
-      };
 
+      const addItem = (fileName) => {
+        push(databaseRef(database,`users/${user.uid}/videos`), fileName);
+      };
+    
+      const addVideoElement = (filename,descr) => {
+        const addElement = {
+          name:filename,
+          description:descr.value,
+          views:0,
+          uploadedBy:user.displayName,
+          updated:Date.now()
+        };
+
+        push(databaseRef(database,`videos/${filename}`), addElement);
+      }
+      
+
+      const updateInDatabase = async(fileName) => {
+        const descr = document.querySelector("#video-description");
+        const itemRef = databaseRef(database);
+        await get(child(itemRef,`users/${user.uid}`))
+        .then( async (snapshot) => {
+          if(!snapshot.exists()){
+             await set(databaseRef(database,`users/${user.uid}`),{
+              username:user.displayName,
+              email:user.email,
+              videos:[]
+            });
+          }
+        });
+        addVideoElement(fileName,descr);
+        addItem(fileName);
+      }
+
+      const uploadVideo = async (file) => {    
+        const videoFile = file;
+        const videoType = videoFile.type;
+        if(videoType.includes("video")){
+          const arr = videoType.split("video/");
+          const extension = arr[1];
+
+          const fileName = hashStringWithTime(selectedFile.name+user.uid);
+          const videoKey = "inputs/"+fileName+"."+extension;
+
+          const params = {
+            Bucket: S3_BUCKET,
+            Key: videoKey,
+            Body: videoFile,
+            ContentType: videoFile.type
+          };
+
+          s3.putObject(params, (err, data) => {
+            if (err) {
+              console.log('Error uploading video:', err);
+            } else {
+              console.log('Video uploaded successfully:', data);
+              updateInDatabase(fileName);
+              setShowDialog(false);
+            }
+          });
+        }
+        
+      };
+//"assets/Master/MP4/Master.mp4"
     return(
         <div className='upload-container'>
             <div className='manage-content-header'>
