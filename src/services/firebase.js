@@ -5,14 +5,14 @@ import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDcJO6qVhhgK5ILBpgpusiR_BUAo4MgpS8",
-    authDomain: "vubble-68af5.firebaseapp.com",
-    databaseURL: "https://vubble-68af5-default-rtdb.firebaseio.com",
-    projectId: "vubble-68af5",
-    storageBucket: "vubble-68af5.appspot.com",
-    messagingSenderId: "431221834103",
-    appId: "1:431221834103:web:ac632a4f99a440311d2172",
-    measurementId: "G-SH4BW2W65V"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MSG_SENDER_ID,
+    appId: process.env.FIREBASE_API_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
